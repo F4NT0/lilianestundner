@@ -1,0 +1,107 @@
+---
+import { Card } from '@santi020k/lumen-astro'
+---
+
+<section class="starter-container starter-section contact">
+  <p class="starter-eyebrow">Contato</p>
+  <h2 class="contact-title">Toda criança merece crescer <em>protegida!</em></h2>
+  <p class="contact-lead">
+    Atendo escolas, empresas, prefeituras, organizações sociais, igrejas e grupos de famílias com palestras, treinamentos e projetos voltados à educação emocional, educação sexual preventiva e prevenção ao abuso sexual infantil.
+  </p>
+  <p class="contact-lead">
+    Preencha o formulário e entrarei em contato para entender as necessidades da sua instituição e apresentar a melhor proposta de trabalho.
+  </p>
+  <Card class="contact-card">
+    <form id="contact-form" class="contact-form" novalidate>
+      <p class="contact-hint"><span class="req">*</span> Campos obrigatórios</p>
+      <label><span>Nome <span class="req" aria-hidden="true">*</span></span><input name="nome" type="text" required /></label>
+      <label><span>Seu email <span class="req" aria-hidden="true">*</span></span><input name="email" type="email" required /></label>
+      <label>Telefone<input name="telefone" type="tel" /></label>
+      <label><span>Assunto <span class="req" aria-hidden="true">*</span></span><input name="assunto" type="text" required /></label>
+      <label><span>Mensagem <span class="req" aria-hidden="true">*</span></span><textarea name="mensagem" rows="6" required></textarea></label>
+      <button type="submit" class="contact-send">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Enviar email
+      </button>
+    </form>
+  </Card>
+</section>
+
+<style>
+  .contact { display: grid; gap: 1rem; max-width: 46rem; }
+  .contact-lead { color: hsl(var(--ink-soft)); }
+  .contact-form { display: grid; gap: 1rem; padding: 1.5rem; }
+  .contact-form label { display: grid; gap: 0.4rem; font-weight: 600; font-size: 0.9rem; }
+  .contact-form input, .contact-form textarea {
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid #facc15; border-color: #facc15; }
+  .contact-send {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    justify-self: center;
+    padding: 0.85rem 1.6rem; border: none; border-radius: 999px; cursor: pointer;
+    background: #facc15; color: #1a1500; font-weight: 700; font-size: 1rem;
+  }
+  .contact-send:hover { background: #eab308; }
+  .req { color: #dc2626; }
+  .contact-hint { font-size: 0.8rem; opacity: 0.8; }
+  .contact-form input:user-invalid, .contact-form textarea:user-invalid { border-color: #dc2626; outline-color: #dc2626; }
+  :global(.field-error) { color: #dc2626; font-size: 0.8rem; font-weight: 500; }
+  :global(html:not(.dark)) .contact-card { background: #fffdf7 !important; border-color: #d9c9a0 !important; }
+  :global(html:not(.dark)) .contact-form input,
+  :global(html:not(.dark)) .contact-form textarea {
+    background: #fff;
+    border: 1.5px solid #b8a67a;
+    color: #2a2418;
+  }
+  .contact-title { font-size: clamp(1.6rem, 4.2vw, 3rem); white-space: nowrap; width: max-content; max-width: none; }
+  .contact-title em { color: #facc15; font-weight: 800; }
+  :global(html:not(.dark)) .contact-title em { color: #a16207; }
+  @media (max-width: 640px) { .contact-title { white-space: normal; width: auto; } }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null
+  const msgs: Record<string, string> = {
+    nome: 'Informe seu nome.',
+    email: 'Informe um email válido.',
+    assunto: 'Informe o assunto.',
+    mensagem: 'Escreva sua mensagem.'
+  }
+
+  const validate = (el: HTMLInputElement | HTMLTextAreaElement) => {
+    el.parentElement?.querySelector('.field-error')?.remove()
+    if (el.checkValidity()) return true
+    const err = document.createElement('span')
+    err.className = 'field-error'
+    err.textContent = msgs[el.name] ?? 'Campo inválido.'
+    el.parentElement?.append(err)
+    return false
+  }
+
+  form?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]').forEach(el =>
+    el.addEventListener('blur', () => validate(el))
+  )
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault()
+    const fields = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')]
+    const results = fields.map(validate)
+    if (results.includes(false)) {
+      fields[results.indexOf(false)].focus()
+      return
+    }
+    const f = new FormData(form)
+    const body = `Nome: ${f.get('nome')}
+Email: ${f.get('email')}
+Telefone: ${f.get('telefone') || '-'}
+
+${f.get('mensagem')}`
+    window.location.href = `mailto:lilianestundner@gmail.com?subject=${encodeURIComponent(String(f.get('assunto')))}&body=${encodeURIComponent(body)}`
+  })
+</script>

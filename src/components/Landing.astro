@@ -1,0 +1,398 @@
+---
+import {
+  Badge,
+  ButtonLink,
+  Card,
+  Icon,
+  Link,
+  Progress
+} from '@santi020k/lumen-astro'
+
+interface Props {
+  basePath: string
+}
+
+const { basePath } = Astro.props
+
+const templates = [
+  {
+    number: '01',
+    name: 'Everyday commerce',
+    route: 'ecommerce',
+    text: 'A considered storefront, a working cart, and room for your own collection.',
+    icon: 'shopping-bag'
+  },
+  {
+    number: '02',
+    name: 'Clarity at a glance',
+    route: 'dashboard',
+    text: 'Readable metrics, period comparisons, and charts that share your visual language.',
+    icon: 'chart-no-axes-combined'
+  },
+  {
+    number: '03',
+    name: 'Work worth showing',
+    route: 'portfolio',
+    text: 'An editorial portfolio that gives your projects the space they deserve.',
+    icon: 'layers'
+  }
+] as const
+---
+
+<section class="starter-hero starter-container landing-hero">
+  <div class="starter-hero-copy">
+    <Badge variant="outline" class="gold-badge">Liliane Stundner ESEPAS</Badge>
+    <h1>
+      <span class="starter-stat"><span id="stat-count" data-target="80">0</span>%</span>
+      dos Casos de Abuso Infantil Ocorrem no Ambiente Familiar
+    </h1>
+    <p class="starter-lead">
+      A maioria dos casos de abuso sexual infantil é cometida por pessoas conhecidas e de confiança da criança, o que reforça a necessidade de que escolas e demais instituições estejam preparadas para identificar sinais e agir de forma preventiva. Minha missão é ajudar a mudar essa realidade em casa e nas instituições, vamos mudar essa realidade?
+    </p>
+    <div class="starter-actions">
+      <ButtonLink href={`${basePath}/contato`} class="whatsapp-btn">
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> Entre em contato conosco
+      </ButtonLink>
+      <ButtonLink href="#" class="ebook-btn" showArrow>
+        Ebook Tô grávida, e agora?
+      </ButtonLink>
+    </div>
+  </div>
+</section>
+<section class="starter-values" aria-label="Starter features">
+  <div class="starter-container starter-values-inner">
+    <span><svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg> Maternidade</span>
+    <span><svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M6 8h12"/></svg> Fé</span>
+    <span><svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Educação Emocional</span>
+    <span><svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg> Educação Sexual</span>
+    <span><svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg> Educação Financeira</span>
+  </div>
+</section>
+<section class="starter-container starter-section" id="templates">
+  <div class="about">
+    <div class="about-text">
+      <p class="starter-eyebrow">Quem sou eu</p>
+      <h2>Liliane Stundner</h2>
+      <h3 class="about-sub">
+        Especialista ESEPAS - Educação Sexual, Emocional e Prevenção ao Abuso Sexual!
+      </h3>
+      <p>
+        Sou Liliane Stundner, casada, mãe e tutora do Alex. Especialista em Educação Emocional, Sexual e Prevenção ao Abuso Sexual (ESEPAS), uma especialização que nasceu muito mais da minha história de vida do que de uma escolha acadêmica.
+      </p>
+      <p>
+        Desde que soube da chegada da minha primeira filha, iniciei uma jornada intensa de aprendizado sobre o universo infantil. Entre livros, estudos e vivências diárias, mergulhei no desenvolvimento infantil buscando compreender como formar crianças mais seguras, confiantes e emocionalmente saudáveis. Como toda mãe, enfrentei desafios, medos, dúvidas e as batalhas que acompanham a responsabilidade de educar e proteger uma criança em um mundo cada vez mais complexo.
+      </p>
+      <p>
+        Ao longo dessa caminhada, percebi que muitas famílias vivem as mesmas inseguranças e não sabem como abordar temas fundamentais, como limites corporais, educação sexual preventiva, inteligência emocional e proteção contra diferentes formas de violência. Foi essa percepção que me levou a aprofundar meus estudos e concluir minha especialização em ESEPAS.
+      </p>
+      <p>
+        Hoje, minha missão é ajudar mães, pais, cuidadores, escolas e empresas a criarem ambientes mais seguros para crianças e adolescentes. Acredito que a informação e a prevenção são as ferramentas mais poderosas na proteção da infância. Por meio da educação emocional e sexual preventiva, trabalho para conscientizar adultos, fortalecer vínculos familiares e contribuir para a construção de redes de proteção capazes de prevenir abusos e garantir o desenvolvimento saudável das nossas crianças.
+      </p>
+      <ButtonLink
+        href="https://www.instagram.com/lilianeesepas"
+        class="instagram-btn"
+        newTab
+      >
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+        @lilianeesepas
+      </ButtonLink>
+    </div>
+    <div class="about-photo">
+      <div class="about-glow" aria-hidden="true"></div>
+      <img src={`${basePath}/liliane.jpg`} alt="Liliane Stundner" />
+    </div>
+  </div>
+</section>
+<section class="starter-container starter-section starter-closing ebook-launch" id="ebook">
+  <p class="starter-eyebrow ebook-eyebrow">Lançamento Ebook</p>
+  <div class="ebook-heading">
+    <h2 class="ebook-title">Tô Grávida, e agora?</h2>
+    <p class="ebook-subtitle">Reflexões de uma mãe de segunda viagem!</p>
+  </div>
+  <div class="ebook-book">
+    <div class="ebook-3d">
+      <img src={`${basePath}/ebook-capa.png`} alt="Capa do ebook Tô Grávida, e agora?" />
+    </div>
+  </div>
+  <div class="ebook-promo">
+    <span class="ebook-tag">Promoção Black Friday</span>
+    <p class="ebook-price">
+      de <s>R$ 39,90</s> por <strong>R$ 19,90</strong>
+    </p>
+    <p>Aproveite a oferta por tempo limitado e comece sua jornada com mais segurança e acolhimento.</p>
+  </div>
+  <ButtonLink href="#" class="ebook-btn ebook-buy" showArrow>
+    Comprar agora
+  </ButtonLink>
+</section>
+
+<style>
+  .ebook-eyebrow {
+    margin-bottom: 0 !important;
+  }
+  .ebook-heading {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .ebook-title {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.02em;
+  }
+  .ebook-subtitle {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    font-size: 1.15rem;
+  }
+  .ebook-price strong {
+    -webkit-text-stroke: 1.5px #000;
+    paint-order: stroke fill;
+  }
+  .ebook-launch :global(.ebook-buy) {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+  :global(html.dark) .ebook-launch :global(.ebook-buy) {
+    background: #facc15 !important;
+    border-color: #facc15 !important;
+    color: #1a1500 !important;
+  }
+  :global(html.dark) .ebook-launch :global(.ebook-buy:hover) {
+    background: #fde047 !important;
+  }
+  :global(html:not(.dark)) .ebook-launch :global(.ebook-buy) {
+    background: #92400e !important;
+    border-color: #92400e !important;
+    color: #fff !important;
+  }
+  :global(html:not(.dark)) .ebook-launch :global(.ebook-buy:hover) {
+    background: #78350f !important;
+  }
+  .ebook-book {
+    perspective: 1200px;
+    padding: 1rem 0;
+  }
+  .ebook-3d {
+    position: relative;
+    width: min(70vw, 280px);
+    transform: rotateY(-28deg);
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+    border-radius: 2px 8px 8px 2px;
+    box-shadow: -18px 20px 35px rgba(0, 0, 0, 0.5);
+  }
+  .ebook-3d:hover {
+    transform: rotateY(-12deg);
+  }
+  .ebook-3d img {
+    display: block;
+    width: 100%;
+    border-radius: 2px 8px 8px 2px;
+  }
+  .ebook-3d::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 10px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.25) 40%, transparent);
+    border-radius: 2px 0 0 2px;
+    z-index: 1;
+  }
+  .ebook-3d::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: -12px;
+    width: 12px;
+    background: repeating-linear-gradient(0deg, #f3ebdc 0 2px, #d9cdb4 2px 3px);
+    transform: rotateY(90deg);
+    transform-origin: left;
+  }
+  .ebook-launch {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .ebook-cover {
+    width: min(100%, 280px);
+    aspect-ratio: 3 / 4;
+    border-radius: 1.25rem;
+    border: 2px dashed #facc15;
+    display: grid;
+    place-items: center;
+    color: #facc15;
+    font-weight: 600;
+  }
+  .ebook-tag {
+    background: #facc15;
+    color: #1a1500;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .ebook-promo {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: center;
+  }
+  .ebook-price {
+    font-size: 1.5rem;
+  }
+  .ebook-price strong {
+    font-size: 2.2rem;
+    color: #facc15;
+  }
+  .ebook-launch :global(.ebook-buy) {
+    padding: 0.9rem 2rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .about {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .about-text {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+  }
+  .about-sub {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: hsl(var(--ink-soft));
+  }
+  .about :global(.instagram-btn) {
+    background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.8rem 1.5rem;
+    gap: 0.5rem;
+  }
+  .about-photo {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 380px);
+  }
+  .about-photo img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1.75rem;
+  }
+  .about-glow {
+    position: absolute;
+    inset: -12%;
+    border-radius: 2.5rem;
+    background: radial-gradient(circle, #facc15 0%, rgba(250, 204, 21, 0.25) 45%, transparent 70%);
+    filter: blur(28px);
+    animation: glow-pulse 3.5s ease-in-out infinite;
+  }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.95); }
+    50% { opacity: 0.85; transform: scale(1.08); }
+  }
+  @media (max-width: 800px) {
+    .about { grid-template-columns: 1fr; }
+  }
+  .landing-hero :global(.gold-badge) {
+    color: #facc15;
+    border-color: #facc15;
+  }
+  .landing-hero :global(.ebook-btn),
+  .landing-hero :global(.whatsapp-btn) {
+    padding: 0.9rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    gap: 0.6rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .landing-hero :global(.ebook-btn:hover),
+  .landing-hero :global(.whatsapp-btn:hover) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  }
+  .landing-hero :global(.whatsapp-btn) {
+    background: #facc15;
+    border-color: #facc15;
+    color: #1a1500;
+  }
+  .landing-hero :global(.whatsapp-btn:hover) {
+    background: #eab308;
+  }
+  .topic-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .starter-values-inner span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .starter-stat {
+    margin-right: 0.35em;
+  }
+  .landing-hero :global(.ebook-btn) {
+    background: #b8860b;
+    border-color: #b8860b;
+    color: #fff;
+  }
+  .landing-hero :global(.ebook-btn:hover) {
+    background: #9a6f08;
+  }
+  .landing-hero {
+    grid-template-columns: 1fr;
+  }
+  .landing-hero h1 {
+    font-size: clamp(1.6rem, 3.6vw, 2.8rem);
+    line-height: 1.2;
+    max-width: none;
+    width: 100%;
+  }
+  .landing-hero .starter-lead {
+    max-width: none;
+  }
+  .starter-stat {
+    color: #facc15;
+    font-weight: 800;
+    font-style: normal;
+  }
+  #stat-count {
+    font-size: 1.25em;
+  }
+</style>
+<script>
+  const el = document.getElementById('stat-count')
+  if (el) {
+    const target = Number(el.dataset.target)
+    const duration = 2000
+    const start = performance.now()
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1)
+      el.textContent = String(Math.round(p * target))
+      if (p < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }
+</script>
